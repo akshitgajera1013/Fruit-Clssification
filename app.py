@@ -1,8 +1,8 @@
 # =========================================================================================
 # 🍏 AGRIVISION NEURAL ENGINE (ENTERPRISE CV EDITION - MONOLITHIC BUILD)
-# Version: 11.3.0 | Build: Production / Logic Locked
+# Version: 11.4.0 | Build: Production / Cloud-Fetch Integration
 # Description: Advanced Computer Vision Dashboard for Produce Quality Assurance.
-# Features full spatial telemetry, shelf-life forecasting, and Keras image ingestion.
+# Features full spatial telemetry, shelf-life forecasting, and automated GDrive fetching.
 # Theme: AgriVision Nexus (Midnight Dark, Organic Amber, Bio Cyan)
 # =========================================================================================
 
@@ -16,6 +16,7 @@ import json
 from datetime import datetime
 import uuid
 import os
+import gdown
 from PIL import Image
 
 # --- DEEP LEARNING IMPORTS WITH SILENT FALLBACK ---
@@ -37,24 +38,32 @@ st.set_page_config(
 )
 
 # =========================================================================================
-# 2. COMPUTER VISION ASSET INGESTION (KERAS CNN)
+# 2. COMPUTER VISION ASSET INGESTION (CLOUD FETCH & CACHE)
 # =========================================================================================
-@st.cache_resource
+MODEL_FILE = "fruits_classification_model.keras"
+GDRIVE_ID = "1Nhy7VTxqkaIiMzBoeMbkc_X55mJhqnq4"
+
+@st.cache_resource(show_spinner=False)
 def load_vision_infrastructure():
     """
-    Safely loads the Keras CNN model.
-    Falls back to heuristic simulation if the model is missing to preserve UI integrity.
+    Safely loads the Keras CNN model. 
+    If missing (e.g., on first cloud deployment boot), downloads it from Google Drive.
     """
     cnn_model = None
     
     if TF_AVAILABLE:
         try:
-            if os.path.exists("fruits_classification_model.keras"):
-                cnn_model = load_model("fruits_classification_model.keras")
-            elif os.path.exists("fruits_classification_model.h5"):
-                cnn_model = load_model("fruits_classification_model.h5")
-        except Exception:
-            pass 
+            # Check if model exists locally. If not, trigger cloud fetch.
+            if not os.path.exists(MODEL_FILE):
+                with st.spinner("Downloading neural weights from secure cloud storage (this happens only once)..."):
+                    gdown.download(id=GDRIVE_ID, output=MODEL_FILE, quiet=False)
+            
+            # Load the model into memory
+            if os.path.exists(MODEL_FILE):
+                cnn_model = load_model(MODEL_FILE)
+                
+        except Exception as e:
+            st.sidebar.error(f"Cloud Fetch Error: {str(e)}")
 
     return cnn_model
 
@@ -189,6 +198,7 @@ f"""<div style='text-align:center; padding:20px 0 30px;'>
 <b>Normalization:</b> / 255.0 Scale<br>
 <b>Topology:</b> Conv2D + MaxPooling<br>
 <b>Output Node:</b> Sigmoid Binary<br>
+<b>Weights:</b> Cloud Synchronized<br>
 </div>""", unsafe_allow_html=True)
 
     st.markdown('<div class="sb-title">📊 Inference Telemetry</div>', unsafe_allow_html=True)
@@ -260,7 +270,7 @@ with tab1:
                     time.sleep(0.8) # UI Polish
                     
                     try:
-                        # Preprocess exactly matching Jupyter Notebook requirements
+                        # Preprocess
                         img_resized = image.resize((224, 224))
                         img_array = np.array(img_resized) / 255.0
                         processed_image = np.expand_dims(img_array, axis=0)
@@ -277,9 +287,9 @@ with tab1:
                             raw_conf = np.clip(raw_conf, 0.01, 0.99)
                         
                         # ---------------------------------------------------------
-                        # FIXED MATHEMATICAL CLASSIFICATION LOGIC
+                        # MATHEMATICAL CLASSIFICATION LOGIC (LOCKED)
                         # ---------------------------------------------------------
-                        # High confidence (>0.5) maps to Fresh based on notebook weights.
+                        # High confidence (>0.5) maps to Fresh. 
                         is_fresh = raw_conf > 0.5
                         
                         # Final State Variables
