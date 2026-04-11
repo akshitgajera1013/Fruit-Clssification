@@ -5,6 +5,8 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-Framework-FF4B4B.svg)
 ![Keras](https://img.shields.io/badge/Keras-Deep%20Learning-D00000.svg)
 
+Deployment Link :- https://fruit-clssification-bwzcu6tfaxybnkbvjbg62x.streamlit.app/
+
 keras FIle link :- https://drive.google.com/file/d/1Nhy7VTxqkaIiMzBoeMbkc_X55mJhqnq4/view?usp=drive_link
 
 ## 📌 Project Overview
