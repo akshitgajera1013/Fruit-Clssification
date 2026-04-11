@@ -9,6 +9,16 @@ Deployment Link :- https://fruit-clssification-bwzcu6tfaxybnkbvjbg62x.streamlit.
 
 keras FIle link :- https://drive.google.com/file/d/1Nhy7VTxqkaIiMzBoeMbkc_X55mJhqnq4/view?usp=drive_link
 
+#UI
+
+![Output](images/1.png)
+
+![Output](images/2.png)
+
+![Output](images/3.png)
+
+
+
 ## 📌 Project Overview
 **AgriVision** is an enterprise-grade Computer Vision dashboard designed for automated produce quality assurance. Powered by a Deep Convolutional Neural Network (CNN), the system analyzes optical tensors (images) to classify fruits as either **Fresh** or **Rotten**. 
 
