@@ -23,42 +23,47 @@ The platform features a monolithic, 6-tab OS environment complete with spatial e
 * **💾 Secure Dossier Export:** Generates downloadable JSON and CSV artifacts containing the optical inspection telemetry.
 
 ## 📁 Repository Structure
-```text
+
 📦 Fruit-Classification
- ┣ 📜 app.py                            # Main Streamlit UI (AgriVision Monolithic Build)
- ┣ 📜 fruits_classification_model.keras # Trained Keras CNN (Deep Learning Weights)
- ┣ 📜 Fruit_classification.ipynb        # Jupyter Notebook with Model Training/Augmentation Code
- ┣ 📜 requirements.txt                  # Python dependency lockfile
- ┗ 📜 README.md                         # System documentation
+
+      ┣ 📜 app.py                            # Main Streamlit UI (AgriVision Monolithic Build)
+      ┣ 📜 fruits_classification_model.keras # Trained Keras CNN (Deep Learning Weights)
+      ┣ 📜 Fruit_classification.ipynb        # Jupyter Notebook with Model Training/Augmentation Code
+      ┣ 📜 requirements.txt                  # Python dependency lockfile
+      ┗ 📜 README.md                         # System documentation
 
 
 
- 🛠️ Installation & Setup
+🛠️ Installation & Setup
+
 1. Clone the repository
 
-git clone [https://github.com/akshitgajera1013/Fruit-Classification.git](https://github.com/akshitgajera1013/Fruit-Classification.git)
+       git clone [https://github.com/akshitgajera1013/Fruit-Classification.git](https://github.com/akshitgajera1013/Fruit-Classification.git)
 
-cd Fruit-Classification
+       cd Fruit-Classification
 
 2. Create a Virtual Environment (Recommended)
 
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
+       python -m venv venv
+       source venv/bin/activate  # On Windows use: venv\Scripts\activate
 
 3. Install Dependencies
-pip install -r requirements.txt
+   
+       pip install -r requirements.txt
 
 4. Execute the Vision Engine
-streamlit run app.py
+   
+       streamlit run app.py
 
 
 ⚙️ Model Pipeline Specifications
-Input Tensor: (224, 224, 3) — Standardized RGB Color Space.
 
-Normalization: Pixel values rescaled via / 255.0.
-
-Augmentation: Random horizontal flipping, rotation (20%), and zooming (20%) applied during training to prevent overfitting.
-
-Loss Function: Binary Crossentropy.
-
-Optimizer: Adam.
+     Input Tensor: (224, 224, 3) — Standardized RGB Color Space.
+     
+     Normalization: Pixel values rescaled via / 255.0.
+     
+     Augmentation: Random horizontal flipping, rotation (20%), and zooming (20%) applied during training to prevent overfitting.
+     
+     Loss Function: Binary Crossentropy.
+     
+     Optimizer: Adam.
