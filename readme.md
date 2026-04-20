@@ -50,20 +50,22 @@ Each class contains labeled images used for training and evaluating classificati
 🧠 Dataset Structure
 
 The dataset is typically organized into directories:
-dataset/
-│
-├── train/
-│   ├── freshapples/
-│   ├── rottenapples/
-│   ├── freshbanana/
-│   ├── rottenbanana/
-│   └── ...
-│
-├── validation/
-│   └── (same class structure)
-│
-└── test/
-    └── (same class structure)
+
+        dataset/
+
+                │
+                ├── train/
+                │   ├── freshapples/
+                │   ├── rottenapples/
+                │   ├── freshbanana/
+                │   ├── rottenbanana/
+                │   └── ...
+                │
+                ├── validation/
+                │   └── (same class structure)
+                │
+                └── test/
+                    └── (same class structure)
 
 🔑 Key Features
 Labeled image dataset for supervised learning
