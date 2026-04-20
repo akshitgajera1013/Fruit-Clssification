@@ -18,6 +18,68 @@ keras FIle link :- https://drive.google.com/file/d/1Nhy7VTxqkaIiMzBoeMbkc_X55mJh
 ![Output](images/3.png)
 
 
+📁 Dataset Overview
+
+This project uses the Fruits Fresh and Rotten Classification Dataset, which is designed for image classification tasks in computer vision. The dataset contains images of various fruits categorized into fresh and rotten classes, enabling models to learn visual differences between good and spoiled produce.
+
+The dataset is widely used for building and evaluating deep learning models such as CNNs for image classification problems.
+
+📊 Dataset Summary
+
+| Property     | Value                      |
+| ------------ | -------------------------- |
+| Dataset Type | Image Dataset              |
+| Task Type    | Multi-Class Classification |
+| Domain       | Computer Vision            |
+| Data Format  | Images (JPG/PNG)           |
+| Classes      | Fresh & Rotten Fruits      |
+
+
+🍎 Classes in Dataset
+
+The dataset includes multiple fruit categories, each divided into fresh and rotten classes, such as:
+
+Fresh Apple / Rotten Apple
+Fresh Banana / Rotten Banana
+Fresh Orange / Rotten Orange
+Fresh Mango / Rotten Mango
+Fresh Strawberry / Rotten Strawberry
+
+Each class contains labeled images used for training and evaluating classification models.
+
+🧠 Dataset Structure
+
+The dataset is typically organized into directories:
+dataset/
+│
+├── train/
+│   ├── freshapples/
+│   ├── rottenapples/
+│   ├── freshbanana/
+│   ├── rottenbanana/
+│   └── ...
+│
+├── validation/
+│   └── (same class structure)
+│
+└── test/
+    └── (same class structure)
+
+🔑 Key Features
+Labeled image dataset for supervised learning
+Multiple fruit categories
+Clear distinction between fresh and rotten states
+Suitable for CNN-based image classification
+Real-world applicability in agriculture and retail
+
+🎯 Objective of the Dataset
+
+The main objective is to:
+
+Classify fruits as fresh or rotten
+Train deep learning models to recognize visual patterns
+Improve accuracy in automated quality inspection systems
+
 
 ## 📌 Project Overview
 **AgriVision** is an enterprise-grade Computer Vision dashboard designed for automated produce quality assurance. Powered by a Deep Convolutional Neural Network (CNN), the system analyzes optical tensors (images) to classify fruits as either **Fresh** or **Rotten**. 
